@@ -1,0 +1,13 @@
+---
+- hosts: all
+  remote_user: brightcloud
+  tasks:
+  - name: vimrc
+    copy: src=rcfiles/vimrc dest=/home/brightcloud/.vimrc owner=brightcloud group=brightcloud mode=664
+  - name: htmldir
+    file: path=/usr/share/nginx/html owner=brightcloud group=brightcloud
+    remote_user: root
+  - name: htmllink
+    file: path=/home/brightcloud/nginx-html src=/usr/share/nginx/html/ state=link
+    tags:
+      - test

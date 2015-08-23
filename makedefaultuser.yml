@@ -10,3 +10,8 @@
     authorized_key: user=brightcloud key="{{ item }}"
     with_file:
       - keys/gayest
+      - keys/ipod
+      - keys/phone
+      - keys/clearskies
+    tags:
+      - keys
