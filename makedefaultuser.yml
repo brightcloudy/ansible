@@ -1,0 +1,12 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+  - name: add user brightcloud
+    user: name=brightcloud comment="Bright Cloud" shell="/bin/bash" groups=wheel append=yes
+  - name: password 
+    user: name=brightcloud password="$6$rounds=656000$oDibFV0mDsbggkmK$Nak74rnkSrWu21yGG1DtOweoLIjBlF8b4k7fW5tkYSDlvX5L/kqw1XNF1GwrfFce0DpRi8kgDphO61ooAB1tI1"
+  - name: sshkeys
+    authorized_key: user=brightcloud key="{{ item }}"
+    with_file:
+      - keys/gayest

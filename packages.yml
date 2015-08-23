@@ -1,0 +1,17 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+  - name: upgrade
+    dnf: name=* state=latest
+  - name: packages
+    dnf: name="{{ item }}" state=latest
+    with_items:
+    - vim-enhanced
+    - screen
+    - wget
+    - perl
+    - sudo
+    - nginx
+    - irssi
+    - git
